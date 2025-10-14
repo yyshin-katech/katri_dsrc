@@ -54,7 +54,7 @@ typedef struct{
 	unsigned int minEndTime;
 } SIG_SPAT;
 
-SIG_SPAT sig_SPaT[11];
+SIG_SPAT sig_SPaT[5];
 
 struct sockaddr_in dsrc_addr, dsrx_rx_addr, local_addr;
 struct sockaddr_in source_addr;
@@ -565,7 +565,7 @@ int UDP_Init(void)
 	memset(&dsrc_addr, 0x00, sizeof(dsrc_addr));
 	dsrc_addr.sin_family = AF_INET;
 	// dsrc_addr.sin_addr.s_addr = inet_addr("192.168.10.101"); // FOR Lab Test
-	dsrc_addr.sin_addr.s_addr = inet_addr("192.168.1.3"); //htonl(INADDR_ANY);
+	dsrc_addr.sin_addr.s_addr = inet_addr("192.168.1.255"); //htonl(INADDR_ANY);
 	dsrc_addr.sin_port = htons(DSRC_PORT);
 	
 	setsockopt(dsrc_sock_fd, SOL_SOCKET, SO_RCVTIMEO, (char *)&optVal, optLen);
