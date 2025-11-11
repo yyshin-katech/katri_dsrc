@@ -111,7 +111,7 @@ void main(void)
 	
 		// UDPRxDSRC = recvfrom(dsrc_sock_fd, dsrc_data, sizeof(dsrc_data), 0, (struct sockaddr *) &dsrc_addr, &rx_dsrc_len);
 		UDPRxDSRC = recvfrom(dsrc_sock_fd, dsrc_data, BUFF_SIZE, 0, (struct sockaddr *) &dsrc_addr, &rx_dsrc_len);
-		printf("recv data: %d\r\n", UDPRxDSRC);
+		printf("recv data: %d   0x%2X\r\n", UDPRxDSRC, dsrc_data[17]);
 		if((dsrc_data[17] == 0x13))// && (UDPRxDSRC == 197))  // 0x13 == 19
 		{	
 			pEncodingData = &dsrc_data[16];
@@ -482,7 +482,7 @@ void parseSpat(SPAT *pSpat)
 
 				if(sig_SPaT[0].Intersection_id == 200)
 				{
-					if(pmovement->signalGroup == 15)
+					if(pmovement->signalGroup == 9)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						strcpy(sig_SPaT[0].movementName, pmovement->movementName);
@@ -494,7 +494,7 @@ void parseSpat(SPAT *pSpat)
 
 				if(sig_SPaT[1].Intersection_id == 300)
 				{
-					if(pmovement->signalGroup == 9)
+					if(pmovement->signalGroup == 11)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						strcpy(sig_SPaT[1].movementName, pmovement->movementName);
