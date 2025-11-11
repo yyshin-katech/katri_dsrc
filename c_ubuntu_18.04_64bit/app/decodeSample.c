@@ -482,7 +482,7 @@ void parseSpat(SPAT *pSpat)
 
 				if(sig_SPaT[0].Intersection_id == 200)
 				{
-					if(pmovement->signalGroup == 9)
+					if(pmovement->signalGroup == 15)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						strcpy(sig_SPaT[0].movementName, pmovement->movementName);
@@ -494,7 +494,7 @@ void parseSpat(SPAT *pSpat)
 
 				if(sig_SPaT[1].Intersection_id == 300)
 				{
-					if(pmovement->signalGroup == 11)
+					if(pmovement->signalGroup == 9)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						strcpy(sig_SPaT[1].movementName, pmovement->movementName);
@@ -518,7 +518,7 @@ void parseSpat(SPAT *pSpat)
 
 				if(sig_SPaT[3].Intersection_id == 610)
 				{
-					if(pmovement->signalGroup == 1)
+					if(pmovement->signalGroup == 2)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						strcpy(sig_SPaT[3].movementName, pmovement->movementName);
@@ -530,7 +530,7 @@ void parseSpat(SPAT *pSpat)
 
 				if(sig_SPaT[4].Intersection_id == 700)
 				{
-					if(pmovement->signalGroup == 8)
+					if(pmovement->signalGroup == 4)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						strcpy(sig_SPaT[4].movementName, pmovement->movementName);
