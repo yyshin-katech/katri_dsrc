@@ -411,9 +411,9 @@ void parseSpat(SPAT *pSpat)
 		// printf("Intersection id : %d\n", pdata->id.id);
 
 		// Encode Localhost data frame
-		if(pdata->id.id == 200)
+		if(pdata->id.id == 1300)
 		{
-			sig_SPaT[0].Intersection_id = 200;
+			sig_SPaT[0].Intersection_id = 1300;
 		}
 		else if(pdata->id.id == 300)
 		{
@@ -480,9 +480,9 @@ void parseSpat(SPAT *pSpat)
 				{
 				}
 
-				if(sig_SPaT[0].Intersection_id == 200)
+				if(sig_SPaT[0].Intersection_id == 1300)
 				{
-					if(pmovement->signalGroup == 15)
+					if(pmovement->signalGroup == 3)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						strcpy(sig_SPaT[0].movementName, pmovement->movementName);
