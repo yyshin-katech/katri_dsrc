@@ -129,7 +129,7 @@ void main(void)
 			p= malloc(BUFF_SIZE);// malloc(sizeof(SIG_SPAT) * 10);
 			
 			memset(p, 0, BUFF_SIZE);//sizeof(SIG_SPAT) * 10);
-			memcpy(p, (void *)sig_SPaT, BUFF_SIZE);//sizeof(SIG_SPAT) * 10);
+			memcpy(p, (void *)sig_SPaT, sizeof(sig_SPaT));//sizeof(SIG_SPAT) * 10);
 
 			//if(sig_SPaT[4].Intersection_id != 0)//== 400)
 			{
@@ -161,9 +161,9 @@ void main(void)
 			printf("Send SPaT Message to ROS node\r\n");
 			
 
-			for(i=0;i<10;i++)
+			for(i=0;i<5;i++)
 			{
-				memset(&sig_SPaT[i], 0, sizeof(sig_SPaT));
+				memset(&sig_SPaT[i], 0, sizeof(SIG_SPAT));
 			}
 		}
 		
@@ -485,7 +485,7 @@ void parseSpat(SPAT *pSpat)
 					if(pmovement->signalGroup == 3)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
-						strcpy(sig_SPaT[0].movementName, pmovement->movementName);
+						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[0].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[0].movementName)-1); sig_SPaT[0].movementName[sizeof(sig_SPaT[0].movementName)-1]='\0'; }
 						sig_SPaT[0].signalGroup = pmovement->signalGroup;	
 						sig_SPaT[0].eventState = pmoveEvent->eventState;
 						sig_SPaT[0].minEndTime = pmoveEvent->timing.minEndTime;
@@ -497,7 +497,7 @@ void parseSpat(SPAT *pSpat)
 					if(pmovement->signalGroup == 9)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
-						strcpy(sig_SPaT[1].movementName, pmovement->movementName);
+						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[1].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[1].movementName)-1); sig_SPaT[1].movementName[sizeof(sig_SPaT[1].movementName)-1]='\0'; }
 						sig_SPaT[1].signalGroup = pmovement->signalGroup;	
 						sig_SPaT[1].eventState = pmoveEvent->eventState;
 						sig_SPaT[1].minEndTime = pmoveEvent->timing.minEndTime;
@@ -509,7 +509,7 @@ void parseSpat(SPAT *pSpat)
 					if(pmovement->signalGroup == 2)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
-						strcpy(sig_SPaT[2].movementName, pmovement->movementName);
+						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[2].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[2].movementName)-1); sig_SPaT[2].movementName[sizeof(sig_SPaT[2].movementName)-1]='\0'; }
 						sig_SPaT[2].signalGroup = pmovement->signalGroup;	
 						sig_SPaT[2].eventState = pmoveEvent->eventState;
 						sig_SPaT[2].minEndTime = pmoveEvent->timing.minEndTime;
@@ -521,7 +521,7 @@ void parseSpat(SPAT *pSpat)
 					if(pmovement->signalGroup == 2)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
-						strcpy(sig_SPaT[3].movementName, pmovement->movementName);
+						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[3].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[3].movementName)-1); sig_SPaT[3].movementName[sizeof(sig_SPaT[3].movementName)-1]='\0'; }
 						sig_SPaT[3].signalGroup = pmovement->signalGroup;	
 						sig_SPaT[3].eventState = pmoveEvent->eventState;
 						sig_SPaT[3].minEndTime = pmoveEvent->timing.minEndTime;
@@ -533,7 +533,7 @@ void parseSpat(SPAT *pSpat)
 					if(pmovement->signalGroup == 4)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
-						strcpy(sig_SPaT[4].movementName, pmovement->movementName);
+						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[4].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[4].movementName)-1); sig_SPaT[4].movementName[sizeof(sig_SPaT[4].movementName)-1]='\0'; }
 						sig_SPaT[4].signalGroup = pmovement->signalGroup;	
 						sig_SPaT[4].eventState = pmoveEvent->eventState;
 						sig_SPaT[4].minEndTime = pmoveEvent->timing.minEndTime;
