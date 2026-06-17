@@ -560,7 +560,7 @@ void parseSpat(SPAT *pSpat)
 				}
 				if(sig_SPaT[6].Intersection_id == 1500)
 				{
-					if(pmovement->signalGroup == 1)
+					if(pmovement->signalGroup == 10)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[6].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[6].movementName)-1); sig_SPaT[6].movementName[sizeof(sig_SPaT[6].movementName)-1]='\0'; }

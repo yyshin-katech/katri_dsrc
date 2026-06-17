@@ -40,7 +40,7 @@ This is a single-file C application (`app/decodeSample.c`) that acts as a bridge
 | 3 | 610  | 2 |
 | 4 | 700  | 4 |
 | 5 | 100  | 16 |
-| 6 | 1500 | 1 |
+| 6 | 1500 | 10 |
 
 Adding a monitored intersection requires: (a) extending `sig_SPaT[]` size, (b) adding an `if/else if` branch in `parseSpat` for the id, (c) adding a `signalGroup` check inside the inner loop, (d) updating the `memset` clear loop at the bottom of `main` (currently hard-coded to `i<10` even though the array is size 5 — discrepancy worth fixing if touched).
 
