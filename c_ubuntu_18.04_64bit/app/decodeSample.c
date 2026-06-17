@@ -54,7 +54,7 @@ typedef struct{
 	unsigned int minEndTime;
 } SIG_SPAT;
 
-SIG_SPAT sig_SPaT[5];
+SIG_SPAT sig_SPaT[7];
 
 struct sockaddr_in dsrc_addr, dsrx_rx_addr, local_addr;
 struct sockaddr_in source_addr;
@@ -161,7 +161,7 @@ void main(void)
 			printf("Send SPaT Message to ROS node\r\n");
 			
 
-			for(i=0;i<5;i++)
+			for(i=0;i<7;i++)
 			{
 				memset(&sig_SPaT[i], 0, sizeof(SIG_SPAT));
 			}
@@ -435,6 +435,14 @@ void parseSpat(SPAT *pSpat)
 		{
 			sig_SPaT[4].Intersection_id = 700;
 		}
+		else if(pdata->id.id == 100)
+		{
+			sig_SPaT[5].Intersection_id = 100;
+		}
+		else if(pdata->id.id == 1500)
+		{
+			sig_SPaT[6].Intersection_id = 1500;
+		}
 		else
 		{
 
@@ -534,9 +542,31 @@ void parseSpat(SPAT *pSpat)
 					{
 						// sig_SPaT.movementName = pmovement->movementName;
 						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[4].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[4].movementName)-1); sig_SPaT[4].movementName[sizeof(sig_SPaT[4].movementName)-1]='\0'; }
-						sig_SPaT[4].signalGroup = pmovement->signalGroup;	
+						sig_SPaT[4].signalGroup = pmovement->signalGroup;
 						sig_SPaT[4].eventState = pmoveEvent->eventState;
 						sig_SPaT[4].minEndTime = pmoveEvent->timing.minEndTime;
+					}
+				}
+				if(sig_SPaT[5].Intersection_id == 100)
+				{
+					if(pmovement->signalGroup == 16)
+					{
+						// sig_SPaT.movementName = pmovement->movementName;
+						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[5].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[5].movementName)-1); sig_SPaT[5].movementName[sizeof(sig_SPaT[5].movementName)-1]='\0'; }
+						sig_SPaT[5].signalGroup = pmovement->signalGroup;
+						sig_SPaT[5].eventState = pmoveEvent->eventState;
+						sig_SPaT[5].minEndTime = pmoveEvent->timing.minEndTime;
+					}
+				}
+				if(sig_SPaT[6].Intersection_id == 1500)
+				{
+					if(pmovement->signalGroup == 1)
+					{
+						// sig_SPaT.movementName = pmovement->movementName;
+						if(pmovement->m.movementNamePresent){ strncpy((char *)sig_SPaT[6].movementName, (const char *)pmovement->movementName, sizeof(sig_SPaT[6].movementName)-1); sig_SPaT[6].movementName[sizeof(sig_SPaT[6].movementName)-1]='\0'; }
+						sig_SPaT[6].signalGroup = pmovement->signalGroup;
+						sig_SPaT[6].eventState = pmoveEvent->eventState;
+						sig_SPaT[6].minEndTime = pmoveEvent->timing.minEndTime;
 					}
 				}
 				xx3++;
